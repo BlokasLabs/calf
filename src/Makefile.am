@@ -10,7 +10,7 @@ noinst_LTLIBRARIES =
 noinst_PROGRAMS = calfbenchmark
 pkglib_LTLIBRARIES = calf.la
 
-AM_CPPFLAGS = -I$(top_srcdir) -I$(srcdir)
+AM_CPPFLAGS = $(CFLAGS) -I$(top_srcdir) -I$(srcdir)
 # TODO: Remove -finline flags is clang is used
 AM_CXXFLAGS = -ffast-math -finline-limit=80 $(FLUIDSYNTH_DEPS_CFLAGS) $(LV2_DEPS_CFLAGS)
 
