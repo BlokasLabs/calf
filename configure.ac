@@ -99,8 +99,8 @@ LASH_ENABLED=$LASH_FOUND
 
 if test "$JACK_FOUND" = "yes" -o "$LV2_FOUND" = "yes"; then
   PKG_CHECK_MODULES(GUI_DEPS, gtk+-2.0 >= 2.12.0 cairo >= 1.2.0,
-    GUI_ENABLED="yes",
-    GUI_ENABLED="no (GTK+ 2.12 and cairo 1.2 or newer required)"
+    GUI_FOUND="yes",
+    GUI_FOUND="no (GTK+ 2.12 and cairo 1.2 or newer required)"
   )
 fi
 
@@ -113,6 +113,16 @@ if test "$LV2_FOUND" = "yes"; then
       [if test "$withval" = "no"; then LV2_ENABLED="no"; fi],[])
   AC_MSG_RESULT($LV2_ENABLED)
 fi
+
+if test "$GUI_FOUND" = "yes"; then
+  GUI_ENABLED="yes"
+  AC_MSG_CHECKING([whether to enable GUI])
+  AC_ARG_WITH(gui,
+    AC_HELP_STRING([--without-gui],[disable GUI]),
+      [if test "$withval" = "no"; then GUI_ENABLED="no"; fi],[])
+  AC_MSG_RESULT($GUI_ENABLED)
+fi
+
 
 if test "$LASH_FOUND" = "yes"; then
   AC_MSG_CHECKING([whether to allow LASH])
