@@ -4,8 +4,10 @@ SUBDIRS = $(SRCDIRS)
 
 distdir = $(PACKAGE)-$(VERSION)
 
+if USE_GUI
 desktopfilesdir = $(datadir)/applications
 dist_desktopfiles_DATA = calf.desktop
+endif
 
 docdir = $(datadir)/doc/${PACKAGE}
 
